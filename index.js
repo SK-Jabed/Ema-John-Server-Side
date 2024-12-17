@@ -44,10 +44,10 @@ async function run() {
 run().catch(console.dir);
 
 
-app.get('/', (req, res) =>{
-    res.send('john is busy shopping')
+app.get("/", (req, res) =>{
+    res.send('John is busy on shopping');
 })
 
 app.listen(port, () =>{
-    console.log(`ema john server is running on port: ${port}`);
+    console.log(`Ema John server is running on port: ${port}`);
 })
