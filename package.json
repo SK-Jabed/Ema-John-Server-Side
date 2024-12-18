@@ -1,7 +1,7 @@
 {
   "name": "ema-john-server",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is Server Side of Ema John Project",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
