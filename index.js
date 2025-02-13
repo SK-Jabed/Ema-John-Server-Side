@@ -32,32 +32,30 @@ async function run() {
       const size = parseInt(req.query.size);
 
       console.log("Pagination Query", req.query);
-      const result = await productCollection.find()
-      .skip(page * size)
-      .limit(size)
-      .toArray();
+      const result = await productCollection
+        .find()
+        .skip(page * size)
+        .limit(size)
+        .toArray();
       res.send(result);
     });
-
-
 
     app.get("/productsCount", async (req, res) => {
       const count = await productCollection.estimatedDocumentCount();
       res.send({ count });
     });
-    
 
     app.post("/productByIds", async (req, res) => {
       const ids = req.body;
-      const idsWithObjectId = ids.map(id => new ObjectId(id));
+      const idsWithObjectId = ids.map((id) => new ObjectId(id));
       const query = {
         _id: {
-          $in: idsWithObjectId
-        }
-      }
+          $in: idsWithObjectId,
+        },
+      };
       const result = await productCollection.find(query).toArray();
       res.send(result);
-    })
+    });
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
