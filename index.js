@@ -32,6 +32,7 @@ async function run() {
       const size = parseInt(req.query.size);
 
       console.log("Pagination Query", req.query);
+
       const result = await productCollection
         .find()
         .skip(page * size)
@@ -53,6 +54,7 @@ async function run() {
           $in: idsWithObjectId,
         },
       };
+      
       const result = await productCollection.find(query).toArray();
       res.send(result);
     });
